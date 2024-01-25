@@ -10,8 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=VentesRepository::class)
  */
-class Ventes
-{
+class Ventes{
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -96,7 +95,7 @@ class Ventes
         return $this;
     }
 
-    public function getDateVente(): ?\DateTimeInterface
+    public function getDateVente(): ?\DateTime
     {
         return $this->dateVente;
     }

@@ -45,13 +45,13 @@ class CommandeClient
     private $idEntreprise;
 
     /**
-     * @ORM\OneToMany(targetEntity=ligneCommandeClients::class, mappedBy="commandeClient")
+     * @ORM\OneToMany(targetEntity=LigneCommandeClients::class, mappedBy="commandeClient")
      */
-    private $ligneCommandeClients;
+    private $LigneCommandeClients;
 
     public function __construct()
     {
-        $this->ligneCommandeClients = new ArrayCollection();
+        $this->LigneCommandeClients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,26 +120,26 @@ class CommandeClient
     }
 
     /**
-     * @return Collection<int, ligneCommandeClients>
+     * @return Collection<int, LigneCommandeClients>
      */
     public function getLigneCommandeClients(): Collection
     {
-        return $this->ligneCommandeClients;
+        return $this->LigneCommandeClients;
     }
 
-    public function addLigneCommandeClient(ligneCommandeClients $ligneCommandeClient): self
+    public function addLigneCommandeClient(LigneCommandeClients $ligneCommandeClient): self
     {
-        if (!$this->ligneCommandeClients->contains($ligneCommandeClient)) {
-            $this->ligneCommandeClients[] = $ligneCommandeClient;
+        if (!$this->LigneCommandeClients->contains($ligneCommandeClient)) {
+            $this->LigneCommandeClients[] = $ligneCommandeClient;
             $ligneCommandeClient->setCommandeClient($this);
         }
 
         return $this;
     }
 
-    public function removeLigneCommandeClient(ligneCommandeClients $ligneCommandeClient): self
+    public function removeLigneCommandeClient(LigneCommandeClients $ligneCommandeClient): self
     {
-        if ($this->ligneCommandeClients->removeElement($ligneCommandeClient)) {
+        if ($this->LigneCommandeClients->removeElement($ligneCommandeClient)) {
             // set the owning side to null (unless already changed)
             if ($ligneCommandeClient->getCommandeClient() === $this) {
                 $ligneCommandeClient->setCommandeClient(null);

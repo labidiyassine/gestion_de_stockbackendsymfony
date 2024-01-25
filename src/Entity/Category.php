@@ -35,13 +35,13 @@ class Category
     private $idEntreprise;
 
     /**
-     * @ORM\OneToMany(targetEntity=article::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="category")
      */
-    private $articles;
+    private $Articles;
 
     public function __construct()
     {
-        $this->articles = new ArrayCollection();
+        $this->Articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,29 +86,29 @@ class Category
     }
 
     /**
-     * @return Collection<int, article>
+     * @return Collection<int, Article>
      */
     public function getArticles(): Collection
     {
-        return $this->articles;
+        return $this->Articles;
     }
 
-    public function addArticle(article $article): self
+    public function addArticle(Article $Article): self
     {
-        if (!$this->articles->contains($article)) {
-            $this->articles[] = $article;
-            $article->setCategory($this);
+        if (!$this->Articles->contains($Article)) {
+            $this->Articles[] = $Article;
+            $Article->setCategory($this);
         }
 
         return $this;
     }
 
-    public function removeArticle(article $article): self
+    public function removeArticle(Article $Article): self
     {
-        if ($this->articles->removeElement($article)) {
+        if ($this->Articles->removeElement($Article)) {
             // set the owning side to null (unless already changed)
-            if ($article->getCategory() === $this) {
-                $article->setCategory(null);
+            if ($Article->getCategory() === $this) {
+                $Article->setCategory(null);
             }
         }
 

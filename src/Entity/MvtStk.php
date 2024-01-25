@@ -28,9 +28,9 @@ class MvtStk
     private $quantite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=article::class, inversedBy="mvtStks")
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="mvtStks")
      */
-    private $article;
+    private $Article;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -76,14 +76,14 @@ class MvtStk
         return $this;
     }
 
-    public function getArticle(): ?article
+    public function getArticle(): ?Article
     {
-        return $this->article;
+        return $this->Article;
     }
 
-    public function setArticle(?article $article): self
+    public function setArticle(?Article $Article): self
     {
-        $this->article = $article;
+        $this->Article = $Article;
 
         return $this;
     }

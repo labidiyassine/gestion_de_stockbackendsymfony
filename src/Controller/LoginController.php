@@ -21,14 +21,12 @@ class LoginController extends AbstractController
     {
         $data = json_decode($request->getContent(), true);
 
-        // Find the user by email
         $user = $this->getDoctrine()->getRepository(Utilisateurs::class)->findOneBy(['email' => $data['email']]);
 
         if (!$user || !$passwordEncoder->isPasswordValid($user, $data['motDePasse'])) {
             throw new BadCredentialsException('Invalid credentials');
         }
 
-        // Generate JWT token
         $token = $jwtManager->create($user);
 
         return new JsonResponse(['token' => $token]);

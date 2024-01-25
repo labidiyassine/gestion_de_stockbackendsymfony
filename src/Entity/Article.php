@@ -50,28 +50,28 @@ class Article
     private $photo;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="Articles")
      */
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=LigneCommandeClients::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=LigneCommandeClients::class, mappedBy="Article")
      */
-    private $ligneCommandeClients;
+    private $LigneCommandeClients;
 
     /**
-     * @ORM\OneToMany(targetEntity=LigneVente::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=LigneVente::class, mappedBy="Article")
      */
     private $ligneVentes;
 
     /**
-     * @ORM\OneToMany(targetEntity=MvtStk::class, mappedBy="article")
+     * @ORM\OneToMany(targetEntity=MvtStk::class, mappedBy="Article")
      */
     private $mvtStks;
 
     public function __construct()
     {
-        $this->ligneCommandeClients = new ArrayCollection();
+        $this->LigneCommandeClients = new ArrayCollection();
         $this->ligneVentes = new ArrayCollection();
         $this->mvtStks = new ArrayCollection();
     }
@@ -88,22 +88,22 @@ class Article
     // private $category;
 
     // /**
-    //  * @ORM\OneToMany(targetEntity="LigneVente", mappedBy="article")
+    //  * @ORM\OneToMany(targetEntity="LigneVente", mappedBy="Article")
     //  */
     // private $ligneVentes;
 
     // /**
-    //  * @ORM\OneToMany(targetEntity="LigneCommandeClient", mappedBy="article")
+    //  * @ORM\OneToMany(targetEntity="LigneCommandeClient", mappedBy="Article")
     //  */
-    // private $ligneCommandeClients;
+    // private $LigneCommandeClients;
 
     // /**
-    //  * @ORM\OneToMany(targetEntity="LigneCommandeFournisseur", mappedBy="article")
+    //  * @ORM\OneToMany(targetEntity="LigneCommandeFournisseur", mappedBy="Article")
     //  */
     // private $ligneCommandeFournisseurs;
 
     // /**
-    //  * @ORM\OneToMany(targetEntity="MvtStk", mappedBy="article")
+    //  * @ORM\OneToMany(targetEntity="MvtStk", mappedBy="Article")
     //  */
     // private $mvtStks;
 
@@ -218,12 +218,12 @@ class Article
 
     public function getLigneCommandeClients(): ?Collection
     {
-        return $this->ligneCommandeClients;
+        return $this->LigneCommandeClients;
     }
 
-    public function setLigneCommandeClients(?Collection $ligneCommandeClients): self
+    public function setLigneCommandeClients(?Collection $LigneCommandeClients): self
     {
-        $this->ligneCommandeClients = $ligneCommandeClients;
+        $this->LigneCommandeClients = $LigneCommandeClients;
 
         return $this;
     }
@@ -254,8 +254,8 @@ class Article
 
     public function addLigneCommandeClient(LigneCommandeClients $ligneCommandeClient): self
     {
-        if (!$this->ligneCommandeClients->contains($ligneCommandeClient)) {
-            $this->ligneCommandeClients[] = $ligneCommandeClient;
+        if (!$this->LigneCommandeClients->contains($ligneCommandeClient)) {
+            $this->LigneCommandeClients[] = $ligneCommandeClient;
             $ligneCommandeClient->setArticle($this);
         }
 
@@ -264,7 +264,7 @@ class Article
 
     public function removeLigneCommandeClient(LigneCommandeClients $ligneCommandeClient): self
     {
-        if ($this->ligneCommandeClients->removeElement($ligneCommandeClient)) {
+        if ($this->LigneCommandeClients->removeElement($ligneCommandeClient)) {
             // set the owning side to null (unless already changed)
             if ($ligneCommandeClient->getArticle() === $this) {
                 $ligneCommandeClient->setArticle(null);

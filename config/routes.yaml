@@ -1,14 +1,21 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
-# config/routes.yaml
-
-article_controller:
+Article_controller:
     resource: '../src/Controller/ArticleController.php'
     type: annotation
+
 register_controller:
     resource: '../src/Controller/RegistrationController.php'
     type: annotation
+
 Login_controller:
     resource: '../src/Controller/LoginController.php'
+    type: annotation
+
+Client_Controller:
+    resource: '../src/Controller/ClientController.php'
+    type: annotation
+Category_Controller:
+    resource: '../src/Controller/CategoryController.php'
+    type: annotation
+CommandeClient_Controller:
+    resource: '../src/Controller/CommandeClientController.php'
     type: annotation

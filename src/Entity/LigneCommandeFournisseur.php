@@ -18,23 +18,127 @@ class LigneCommandeFournisseur
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CommandeFournisseur::class, inversedBy="LigneCommandeFournisseur")
+     * @ORM\ManyToOne(targetEntity=CommandeFournisseur::class, inversedBy="ligneCommandeFournisseurs")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $commandeFournisseur;
+    private $idCommandeFournisseur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Article::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idArticle;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2)
+     */
+    private $prixUnitaire;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $quantite;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $creationDate;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $lastModifiedDate;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $idEntreprise;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCommandeFournisseur(): ?CommandeFournisseur
+    public function getIdCommandeFournisseur(): ?CommandeFournisseur
     {
-        return $this->commandeFournisseur;
+        return $this->idCommandeFournisseur;
     }
 
-    public function setCommandeFournisseur(?CommandeFournisseur $commandeFournisseur): self
+    public function setIdCommandeFournisseur(?CommandeFournisseur $idCommandeFournisseur): self
     {
-        $this->commandeFournisseur = $commandeFournisseur;
+        $this->idCommandeFournisseur = $idCommandeFournisseur;
+
+        return $this;
+    }
+
+    public function getIdArticle(): ?Article
+    {
+        return $this->idArticle;
+    }
+
+    public function setIdArticle(?Article $idArticle): self
+    {
+        $this->idArticle = $idArticle;
+
+        return $this;
+    }
+
+    public function getPrixUnitaire()
+    {
+        return $this->prixUnitaire;
+    }
+
+    public function setPrixUnitaire($prixUnitaire): self
+    {
+        $this->prixUnitaire = $prixUnitaire;
+
+        return $this;
+    }
+
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    public function setQuantite(int $quantite): self
+    {
+        $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getCreationDate(): ?\DateTimeInterface
+    {
+        return $this->creationDate;
+    }
+
+    public function setCreationDate(\DateTimeInterface $creationDate): self
+    {
+        $this->creationDate = $creationDate;
+
+        return $this;
+    }
+
+    public function getLastModifiedDate(): ?\DateTimeInterface
+    {
+        return $this->lastModifiedDate;
+    }
+
+    public function setLastModifiedDate(\DateTimeInterface $lastModifiedDate): self
+    {
+        $this->lastModifiedDate = $lastModifiedDate;
+
+        return $this;
+    }
+
+    public function getIdEntreprise(): ?int
+    {
+        return $this->idEntreprise;
+    }
+
+    public function setIdEntreprise(int $idEntreprise): self
+    {
+        $this->idEntreprise = $idEntreprise;
 
         return $this;
     }

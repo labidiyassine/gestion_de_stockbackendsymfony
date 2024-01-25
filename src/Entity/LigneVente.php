@@ -18,14 +18,14 @@ class LigneVente
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=ventes::class, inversedBy="ligneVentes")
+     * @ORM\ManyToOne(targetEntity=Ventes::class, inversedBy="ligneVentes")
      */
     private $vente;
 
     /**
      * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="ligneVentes")
      */
-    private $article;
+    private $Article;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=0)
@@ -47,12 +47,12 @@ class LigneVente
         return $this->id;
     }
 
-    public function getVente(): ?ventes
+    public function getVente(): ?Ventes
     {
         return $this->vente;
     }
 
-    public function setVente(?ventes $vente): self
+    public function setVente(?Ventes $vente): self
     {
         $this->vente = $vente;
 
@@ -61,12 +61,12 @@ class LigneVente
 
     public function getArticle(): ?Article
     {
-        return $this->article;
+        return $this->Article;
     }
 
-    public function setArticle(?Article $article): self
+    public function setArticle(?Article $Article): self
     {
-        $this->article = $article;
+        $this->Article = $Article;
 
         return $this;
     }

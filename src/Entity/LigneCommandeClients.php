@@ -18,14 +18,14 @@ class LigneCommandeClients
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=CommandeClient::class, inversedBy="ligneCommandeClients")
+     * @ORM\ManyToOne(targetEntity=CommandeClient::class, inversedBy="LigneCommandeClients")
      */
     private $commandeClient;
 
     /**
-     * @ORM\ManyToOne(targetEntity=article::class, inversedBy="ligneCommandeClients")
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="LigneCommandeClients")
      */
-    private $article;
+    private $Article;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=0)
@@ -59,14 +59,14 @@ class LigneCommandeClients
         return $this;
     }
 
-    public function getArticle(): ?article
+    public function getArticle(): ?Article
     {
-        return $this->article;
+        return $this->Article;
     }
 
-    public function setArticle(?article $article): self
+    public function setArticle(?Article $Article): self
     {
-        $this->article = $article;
+        $this->Article = $Article;
 
         return $this;
     }
@@ -75,7 +75,6 @@ class LigneCommandeClients
     {
         return $this->quantite;
     }
-
     public function setQuantite(string $quantite): self
     {
         $this->quantite = $quantite;
